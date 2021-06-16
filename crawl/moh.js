@@ -1,0 +1,101 @@
+const cheerio = require('cheerio');
+const axios = require('../client/node_modules/axios');
+const chalk = require('chalk');
+const fs = require('fs');
+const moment = require('../client/node_modules/moment');
+const { model } = require('mongoose');
+
+const successAlert = chalk.bold.cyan;
+const errorWaring = chalk.bold.red;
+
+
+
+module.exports = {
+  getMohAPI: async () => {
+    try{
+      const data = {}; 
+      const res = await axios.default({
+        method: 'GET',
+        url: 'http://ncov.moh.gov.vn/',
+        httpsAgent: new (require('https').Agent)({rejectUnauthorized: false})
+      })
+
+      console.log(successAlert(`Get source successfully at ${moment(new Date()).format('DD/MM/YYYY HH:MM:SS')}`));
+      
+      const $ = cheerio.load(res.data);
+
+      const selectorVN = '#portlet_corona_trangchu_top_CoronaTrangchuTopPortlet_INSTANCE_RrVAbIFIPL7v > div > div.portlet-content-container > div > section.container > div.row.d-none.d-block.d-lg-none > div > div.form-row';
+      const selectorWorld = '#portlet_corona_trangchu_top_CoronaTrangchuTopPortlet_INSTANCE_RrVAbIFIPL7v > div > div.portlet-content-container > div > section.container > div.row.d-none.d-block.d-lg-none > div > div.row';
+      
+      const script = $('script:not([src])')[15].children[0].data;
+      const detail_vn = JSON.parse(script.match(/\[{.*?\}]/)[0]);
+      data.detail_vn = detail_vn;
+      
+      $(selectorVN).each((index, el) => {
+        let Confirmed = $(el).find('.text-danger-new span').text();
+        let Active = $(el).find('.text-warning1:contains(Đang điều trị) span').text();
+        let Recovered = $(el).find('.text-success:contains(Khỏi) span').text();
+        let Deaths = $(el).find('.text-danger-new1:contains(Tử vong) span').text();
+        let dataVn = {
+          'Confirmed': Confirmed.split('.').join(''),
+          'Active': Active.split('.').join(''),
+          'Recovered': Recovered.split('.').join(''),
+          'Deaths': Deaths.split('.').join(''),
+          'Country': 'Việt Nam',
+          'Slug': "vietnam",
+          'ISO2': 'vn',
+        }
+
+        data.vietnam = dataVn;
+      
+      });
+
+      $(selectorWorld).each((index, el) => {
+        let Confirmed = $(el).find('.text-danger-new span').text();
+        let Active = $(el).find('.text-warning1:contains(ĐANG NHIỄM) span').text();
+        let Recovered = $(el).find('.text-success:contains(Khỏi) span').text();
+        let Deaths = $(el).find('.text-danger-new1:contains(Tử vong) span').text();
+        let dataWolrd = {
+          'Confirmed': Confirmed.split('.').join(''),
+          'Active': Active.split('.').join(''),
+          'Recovered': Recovered.split('.').join(''),
+          'Deaths': Deaths.split('.').join(''),
+          'Country': 'Thế giới',
+          'Slug': "world",
+          'ISO2': 'wld',
+        };
+        data.world = dataWolrd;
+      });
+
+      return data;
+    }catch (err) {
+      console.log(errorWaring(`Get source fail because ${err} at ${moment(new Date()).format('DD/MM/YYYY HH:MM:SS')}`));
+    }
+  }
+
+}
+
+
+
+
+// const app = express();
+// const port = 3000;
+
+// app.get('/', function (req, res) {
+//     res.send('<h1><a href="./api/">start</a></h1>')
+// });
+
+// app.get('/api/', async (req, res) => {
+//     try {
+//         const vietnam = await getdatavn();
+//         return res.status(200).json({
+//             result: vietnam,
+//         })
+//     } catch (e) {
+//         return res.status(500).json({
+//             e: e.toString(),
+//         })
+//     }
+// });
+
+// app.listen(process.env.PORT || port, () => console.log(`Example app listening at http://localhost:${port}`));
