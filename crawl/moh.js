@@ -1,9 +1,9 @@
-const cheerio = require('cheerio');
+const moment = require('../client/node_modules/moment');
 const axios = require('../client/node_modules/axios');
+const { model } = require('mongoose');
+const cheerio = require('cheerio');
 const chalk = require('chalk');
 const fs = require('fs');
-const moment = require('../client/node_modules/moment');
-const { model } = require('mongoose');
 
 const successAlert = chalk.bold.cyan;
 const errorWaring = chalk.bold.red;
@@ -29,7 +29,10 @@ module.exports = {
       
       const script = $('script:not([src])')[15].children[0].data;
       const detail_vn = JSON.parse(script.match(/\[{.*?\}]/)[0]);
-      data.detail_vn = detail_vn;
+      data.detail_vn = { 
+        Date: moment(new Date()).format("DD-MM-YYYY"),
+        data: detail_vn
+      };
       
       $(selectorVN).each((index, el) => {
         let Confirmed = $(el).find('.text-danger-new span').text();
@@ -37,13 +40,14 @@ module.exports = {
         let Recovered = $(el).find('.text-success:contains(Khỏi) span').text();
         let Deaths = $(el).find('.text-danger-new1:contains(Tử vong) span').text();
         let dataVn = {
-          'Confirmed': Confirmed.split('.').join(''),
-          'Active': Active.split('.').join(''),
-          'Recovered': Recovered.split('.').join(''),
-          'Deaths': Deaths.split('.').join(''),
-          'Country': 'Việt Nam',
-          'Slug': "vietnam",
-          'ISO2': 'vn',
+          Confirmed: Confirmed.split('.').join(''),
+          Active: Active.split('.').join(''),
+          Recovered: Recovered.split('.').join(''),
+          Deaths: Deaths.split('.').join(''),
+          Country: 'Việt Nam',
+          Slug: "vietnam",
+          ISO2: 'vn',
+          Date:  moment(new Date()).format("DD-MM-YYYY"),
         }
 
         data.vietnam = dataVn;
@@ -52,17 +56,18 @@ module.exports = {
 
       $(selectorWorld).each((index, el) => {
         let Confirmed = $(el).find('.text-danger-new span').text();
-        let Active = $(el).find('.text-warning1:contains(ĐANG NHIỄM) span').text();
+        let Active = $(el).find('.text-warning1:contains(Đang nhiễm) span').text();
         let Recovered = $(el).find('.text-success:contains(Khỏi) span').text();
         let Deaths = $(el).find('.text-danger-new1:contains(Tử vong) span').text();
         let dataWolrd = {
-          'Confirmed': Confirmed.split('.').join(''),
-          'Active': Active.split('.').join(''),
-          'Recovered': Recovered.split('.').join(''),
-          'Deaths': Deaths.split('.').join(''),
-          'Country': 'Thế giới',
-          'Slug': "world",
-          'ISO2': 'wld',
+          Confirmed: Confirmed.split('.').join(''),
+          Active: Active.split('.').join(''),
+          Recovered: Recovered.split('.').join(''),
+          Deaths: Deaths.split('.').join(''),
+          Country: 'Thế giới',
+          Slug: "world",
+          ISO2: 'wld',
+          Date:  moment(new Date()).format("DD-MM-YYYY"),
         };
         data.world = dataWolrd;
       });

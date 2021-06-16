@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const chalk = require('chalk');
 
-mongoose.set('useCreateIndex', true);
 
 const connected = chalk.bold.cyan;
 const error = chalk.bold.red;
@@ -14,6 +13,7 @@ module.exports = {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
+      useFindAndModify: false,
     });
     mongoose.connection.on('connected', () => {
       console.log(connected('Connect to MongoDB successfully !!!'));

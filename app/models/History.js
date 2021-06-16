@@ -1,3 +1,4 @@
+const moment = require('../../client/node_modules/moment');
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
@@ -11,7 +12,7 @@ const History = new Schema(
     Deaths: { type: Number, default: 0},
     Recovered: { type: Number, default: 0},
     Active: { type: Number, default: 0},
-    Date: { type: Date, default: Date.now },
+    Date: { type: String, default: moment(new Date()).format("DD-MM-YYYY") },
   }
 )
 
