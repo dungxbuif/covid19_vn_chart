@@ -20,9 +20,6 @@ route(app);
 const URL = process.env.MONGODB_URL;
 db.connect(URL);
 
-const api = require('./crawl/moh');
-api.getMohAPI().then(res => console.log(res));
-
 
 app.listen(port, () =>
     console.log(successAlert(`Server is running on http://dungxbuif-localhost:${port}`)),

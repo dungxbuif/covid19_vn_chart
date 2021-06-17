@@ -41,6 +41,7 @@ const initOptions = {
 };
 
 const HighMaps = ({ mapData }) => {
+  console.log(mapData)
   const [options, setOptions] = useState({});
   const [mapLoaded, setMapLoaded] = useState(false);
   const chartRef = useRef(null);
@@ -55,7 +56,7 @@ const HighMaps = ({ mapData }) => {
       setOptions(() => ({
         ...initOptions,
         title: {
-          text: mapData.title,
+          text: 'Việt Nam',
         },
         series: [
           { ...initOptions.series[0], mapData: mapData, data: fakeData },

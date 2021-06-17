@@ -29,7 +29,7 @@ module.exports = {
       
       const script = $('script:not([src])')[15].children[0].data;
       const detail_vn = JSON.parse(script.match(/\[{.*?\}]/)[0]);
-      data.detail_vn = { 
+      data.local_vn = { 
         Date: moment(new Date()).format("DD-MM-YYYY"),
         data: detail_vn
       };

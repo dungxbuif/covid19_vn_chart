@@ -14,7 +14,7 @@ const URL = process.env.MONGODB_URL;
 db.connect(URL);
 
 api.getMohAPI().then(res => {
-  const { detail_vn, vietnam, world } = res;
+  const { local_vn, vietnam, world } = res;
 
   History.findOneAndUpdate({ Date: world.Date }, world, {
     upsert: true,
@@ -33,7 +33,7 @@ api.getMohAPI().then(res => {
     .then(() => console.log(successAlert('Saved vietnam history successfully!!!')))
     .catch(() => console.log(errorWaring('Saved vietnam history fail!!!')))
 
-  Local_vn.findOneAndUpdate({ Date: detail_vn.Date }, detail_vn, {
+  Local_vn.findOneAndUpdate({ Date: local_vn.Date }, local_vn, {
     upsert: true,
     new: true,
     setDefaultsOnInsert: true,
