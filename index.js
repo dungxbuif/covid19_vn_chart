@@ -11,7 +11,15 @@ const errorWaring = chalk.bold.red;
 const app = express();
 const port = process.env.PORT || 1612;
 
+// app.use(express.static(path.join(__dirname, 'public')));
+app.use(
+    express.urlencoded({
+        extended: true,
+    }),
+);
 app.use(express.json());
+
+// app.use(methodOverride('_method'));
 
 // Routing
 route(app);

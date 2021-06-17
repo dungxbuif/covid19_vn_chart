@@ -3,6 +3,7 @@ import HighchartsReact from 'highcharts-react-official';
 import highchartsMap from 'highcharts/modules/map';
 import Highcharts from 'highcharts';
 import { cloneDeep } from 'lodash';
+import { getDetailVnLocal } from '../../apis';
 
 // Load Highcharts modules
 highchartsMap(Highcharts);
@@ -20,6 +21,7 @@ const initOptions = {
   colorAxis: {
     min: 0,
     stops: [
+      [0,'#FFF'],
       [0.2, '#FFC4AA'],
       [0.4, '#FF8A66'],
       [0.6, '#FF392B'],
@@ -27,6 +29,14 @@ const initOptions = {
       [1, '	#7A0826'],
     ],
   },
+  tooltip: {
+    useHTML: true,
+    pointFormat: '<div style="text-align: center;text-transform: uppercase;color:black">'
+      +'<span style="text-align: center;"><b>{point.name}</b></span></div>'
+      +'<div style="color:black"> <b>Nhiễm bệnh: <span >{point.value}</span></b> <br/>'
+      +'<b>Phục hồi: <span >{point.socakhoi}</span> </b><br/> '
+      +'<b>Tử vong: <span >{point.socatuvong}</span></b>	</div>'
+   },
   legend: {
     layout: 'vertical',
     align: 'right',
@@ -34,8 +44,8 @@ const initOptions = {
   },
   series: [
     {
-      name: 'Dân số',
-      joinBy: ['hc-key', 'key'],
+      name: 'CHI TIẾT CA BỆNH',
+      joinBy: ['hc-key', 'hc-key'],
     },
   ],
 };
@@ -48,22 +58,36 @@ const HighMaps = ({ mapData }) => {
 
   useEffect(() => {
     if (mapData && Object.keys(mapData).length) {
-      const fakeData = mapData.features.map((feature, index) => ({
-        key: feature.properties['hc-key'],
-        value: index,
-      }));
+      getDetailVnLocal().then(res=>{
+        const detailData = res.data;
+        // mapData.features.map((feature, index) => ({
+        //   key: feature.properties['hc-key'],
+        //   value: index,
+        // }));
+        console.log(detailData)
 
-      setOptions(() => ({
-        ...initOptions,
-        title: {
-          text: 'Việt Nam',
-        },
-        series: [
-          { ...initOptions.series[0], mapData: mapData, data: fakeData },
-        ],
-      }));
+        detailData.forEach(ele => {
+          mapData.features.forEach(ele2=>{
+            if(ele2.properties['hc-key'] == ele['hc-key']){
+              ele2.properties['name'] == ele['name'];
+              ele2.properties['name'] == ele['woe-name']
+            }
+          });
+        })
+        
+        setOptions(() => ({
+          ...initOptions,
+          title: {
+            text: 'Việt Nam',
+          },
+          series: [
+            { ...initOptions.series[0], mapData: mapData, data: detailData },
+          ],
+        }));
 
-      if (!mapLoaded) setMapLoaded(true);
+        if (!mapLoaded) setMapLoaded(true);
+      })
+      
     }
   }, [mapData, mapLoaded]);
 

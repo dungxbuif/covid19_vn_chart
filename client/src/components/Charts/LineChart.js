@@ -2,10 +2,9 @@ import HighchartsReact from 'highcharts-react-official';
 import { Button, ButtonGroup } from '@material-ui/core'
 import React, { useEffect, useState } from 'react';
 import HighCharts from 'highcharts';
-import moment from 'moment';
 
 const generateOptions = (data) => {
-  const categories = data.map(item => moment(item.Date).format('DD/MM/YYYY'));
+  const categories = data.map(item => item.Date);
 
   return {
     chart: {
@@ -63,7 +62,7 @@ const LineChart = ({ data }) => {
         customData = data;
         break;
       case '2021':
-        customData = data.slice(data.findIndex(item => item.Date === '2021-01-01T00:00:00Z'));
+        customData = data.slice(data.findIndex(item => item.Date === '01/01/2021'));
         break;
       case '30':
           customData = data.slice(data.length - 30);

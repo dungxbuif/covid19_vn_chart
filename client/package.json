@@ -2,6 +2,7 @@
   "name": "covid19_vn_chart",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://dungxbuif-localhost:1612",
   "dependencies": {
     "@fontsource/roboto": "^4.4.5",
     "@highcharts/map-collection": "^1.1.3",
