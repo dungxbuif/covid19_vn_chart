@@ -20,8 +20,9 @@ module.exports = {
     Local_vn.find({ Date: moment(new Date()).format('DD-MM-YYYY')})
       .then(arr=>{
         let data = arr[0].data;
+        let tmpArr =[]
 
-        let resArr = data.map(item=>{
+        data.map(item=>{
           const oldHcKey = item['hc-key']
           if(_localKey[oldHcKey] == undefined) 
             return
@@ -29,16 +30,29 @@ module.exports = {
           const newHcKey = _localKey[oldHcKey]['hc-key'];
           const newAltName = _localKey[oldHcKey]['alt-name'];
 
+          tmpArr.push(newHcKey)
+
           // update new value hc-key and alt name for item
           item['hc-key'] = newHcKey.replace('.','-').toLowerCase();
           item['localname'] = newAltName;
           return item;
         })
 
-        // Delete null value from arr
-        let finalRes = resArr.filter(function (el) {
-          return el != null;
-        });
+        Object.entries(_localKey).forEach(entry=>{
+            let [key,value] = entry;
+  
+            if(!tmpArr.includes(value['hc-key']))
+              data.push({
+                "socakhoi": 0,
+                "socadangdieutri": 0,
+                "socatuvong": 0,
+                "hc-key": value['hc-key'].replace('.','-').toLowerCase(),
+                "value": 0,
+                "localname": value['alt-name'],
+              });
+  
+          });
+
 
         res.send(data)
       })

@@ -227,17 +227,9 @@
     "hc-key": "VN.CM",
     "alt-name": "Ca Mau"
   },
-  "vn-3655": {
-    "hc-key": "VN.3655",
-    "alt-name": null
-  },
   "01": {
     "hc-key": "VN.318",
     "alt-name": "Hà Nội"
-  },
-  "vn-331": {
-    "hc-key": "VN.331",
-    "alt-name": "South East"
   },
   "02": {
     "hc-key": "VN.HG",
@@ -247,20 +239,8 @@
     "hc-key": "VN.CB",
     "alt-name": "Cao Bằng"
   },
-  "vn-307": {
-    "hc-key": "VN.307",
-    "alt-name": "North East"
-  },
   "08": {
     "hc-key": "VN.TQ",
     "alt-name": "Tuyên Quang"
-  },
-  "hs01": {
-    "hc-key": "VN.DAOHOANGSA01",
-    "alt-name": "HoĂ ng Sa 1"
-  },
-  "truongsa": {
-    "hc-key": "VN.TRUONGSA",
-    "alt-name": "TrÆ°á»ng Sa"
   }
 }
