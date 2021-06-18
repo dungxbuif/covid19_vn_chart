@@ -1,9 +1,11 @@
-require('dotenv').config();
+const schedule = require('node-schedule');
+const crawl = require('./crawl/moh');
+const updateData = require('./crawl/updateData');
 const express = require('express');
 const route = require('./routes');
-const crawl = require('./crawl/moh');
 const db = require('./config/db');
 const chalk = require('chalk');
+require('dotenv').config();
 
 const successAlert = chalk.bold.cyan;
 const errorWaring = chalk.bold.red;
@@ -28,6 +30,10 @@ route(app);
 const URL = process.env.MONGODB_URL;
 db.connect(URL);
 
+//schedule run update
+const runUpdateData = schedule.scheduleJob({minute: 58}, time => {
+    updateData();
+});
 
 app.listen(port, () =>
     console.log(successAlert(`Server is running on http://dungxbuif-localhost:${port}`)),
