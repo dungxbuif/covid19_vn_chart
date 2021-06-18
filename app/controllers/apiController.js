@@ -31,7 +31,7 @@ module.exports = {
 
           // update new value hc-key and alt name for item
           item['hc-key'] = newHcKey.replace('.','-').toLowerCase();
-          item['alt-name'] = newAltName;
+          item['localname'] = newAltName;
           return item;
         })
 

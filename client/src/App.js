@@ -49,7 +49,7 @@ function App() {
       <Typography>
         {moment().format('LLL')}
       </Typography>
-      {/* <CountrySelector countries={countries} handleOnChange={handleOnChange} value={selectedCountryID} /> */}
+      {/* <CountrySelector c`ountries={countries} handleOnChange={handleOnChange} value={selectedCountryID} /> */}
       <HighLight report={report} />
       <Summary report={report} selectedCountryId={selectedCountryID} />
     </Container>

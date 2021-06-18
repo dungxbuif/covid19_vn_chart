@@ -18,33 +18,75 @@ const initOptions = {
   mapNavigation: {
     enabled: true,
   },
+  legend: {
+    title: {
+        text: 'Số ca mắc ',
+        style: {
+            color: ( // theme
+                Highcharts.defaultOptions &&
+                Highcharts.defaultOptions.legend &&
+                Highcharts.defaultOptions.legend.title &&
+                Highcharts.defaultOptions.legend.title.style &&
+                Highcharts.defaultOptions.legend.title.style.color
+            ) || 'black'
+        }
+    },
+    y: 100,
+    x:10,
+    align: 'right',
+    verticalAlign: 'top',
+    floating: true,
+    layout: 'vertical',
+    valueDecimals: 0,
+    backgroundColor: ( // theme
+        Highcharts.defaultOptions &&
+        Highcharts.defaultOptions.legend &&
+        Highcharts.defaultOptions.legend.backgroundColor
+    ) || 'rgba(255, 255, 255, 0.85)',
+    symbolRadius: 0,
+    symbolHeight: 14
+  },
+  colors: ['#FFF', '#FFC4AA', '#FF8A66','#FF392B', '#B71525', '#7A0826'],
   colorAxis: {
-    min: 0,
-    stops: [
-      [0,'#FFF'],
-      [0.2, '#FFC4AA'],
-      [0.4, '#FF8A66'],
-      [0.6, '#FF392B'],
-      [0.8, '#B71525'],
-      [1, '	#7A0826'],
-    ],
+    // tickAmount: 10,
+    // stops: [
+    //   [0,'#FFF'],
+    //   [0.2, '#FFC4AA'],
+    //   [0.4, '#FF8A66'],
+    //   [0.6, '#FF392B'],
+    //   [0.8, '#B71525'],
+    //   [1, '	#7A0826'],
+    // ],
+    dataClassColor: 'category',
+    dataClasses: [{
+      name: '0'
+    }, {
+      from: 1, 
+      to: 50
+    }, {
+      from: 51,
+      to: 500
+    }, {
+      from: 501,
+      to: 1000
+    }, {
+      from: 1001,
+      to: 3000
+    }, {
+      from: 3000
+    }],
   },
   tooltip: {
     useHTML: true,
-    pointFormat: '<div style="text-align: center;text-transform: uppercase;color:black">'
-      +'<span style="text-align: center;"><b>{point.name}</b></span></div>'
+    pointFormat: '<div style="text-align: center;color:black">'
+      +'<span style="text-align: center;"><b>{point.localname}</b></span></div>'
       +'<div style="color:black"> <b>Nhiễm bệnh: <span >{point.value}</span></b> <br/>'
       +'<b>Phục hồi: <span >{point.socakhoi}</span> </b><br/> '
       +'<b>Tử vong: <span >{point.socatuvong}</span></b>	</div>'
    },
-  legend: {
-    layout: 'vertical',
-    align: 'right',
-    verticalAlign: 'bottom',
-  },
   series: [
     {
-      name: 'CHI TIẾT CA BỆNH',
+      name: 'SỐ LIỆU CÁC CA BỆNH',
       joinBy: ['hc-key', 'hc-key'],
     },
   ],
@@ -65,15 +107,6 @@ const HighMaps = ({ mapData }) => {
         //   value: index,
         // }));
         console.log(detailData)
-
-        detailData.forEach(ele => {
-          mapData.features.forEach(ele2=>{
-            if(ele2.properties['hc-key'] == ele['hc-key']){
-              ele2.properties['name'] == ele['name'];
-              ele2.properties['name'] == ele['woe-name']
-            }
-          });
-        })
         
         setOptions(() => ({
           ...initOptions,
