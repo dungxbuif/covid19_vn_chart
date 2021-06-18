@@ -79,28 +79,3 @@ module.exports = {
   }
 
 }
-
-
-
-
-// const app = express();
-// const port = 3000;
-
-// app.get('/', function (req, res) {
-//     res.send('<h1><a href="./api/">start</a></h1>')
-// });
-
-// app.get('/api/', async (req, res) => {
-//     try {
-//         const vietnam = await getdatavn();
-//         return res.status(200).json({
-//             result: vietnam,
-//         })
-//     } catch (e) {
-//         return res.status(500).json({
-//             e: e.toString(),
-//         })
-//     }
-// });
-
-// app.listen(process.env.PORT || port, () => console.log(`Example app listening at http://localhost:${port}`));

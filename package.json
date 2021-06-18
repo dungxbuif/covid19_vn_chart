@@ -17,7 +17,7 @@
     "nodemon": "^2.0.7"
   },
   "scripts": {
-    "test": "nodemon dev_test.js",
+    "start": "nodemon dev_test.js",
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""

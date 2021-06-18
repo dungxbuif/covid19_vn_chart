@@ -1,8 +1,7 @@
+const moment = require('../client/node_modules/moment');
 const Local_vn = require('../app/models/Local_vn');
 const History = require('../app/models/History');
-const mongoose = require('mongoose');
-const api = require('./moh');
-const db = require('../config/db');
+const api = require('./moh');;
 require('dotenv').config();
 const chalk = require('chalk');
 
@@ -19,26 +18,25 @@ module.exports = () => {
       upsert: true,
       new: true,
       setDefaultsOnInsert: true,
-      useFindAndModify: true,
+      useFindAndModify: false,
     })
-      .then(() => console.log(successAlert('Saved world history successfully!!!')))
-      .catch(() => console.log(errorWaring('Saved world history fail!!!')))
+      .then(() => console.log(successAlert(`Saved world history successfully at ${moment(new Date()).format('DD/MM/YYYY HH:MM:SS')}!!!`)))
+      .catch(() => console.log(errorWaring(`Saved world history failat ${moment(new Date()).format('DD/MM/YYYY HH:MM:SS')}!!!`)))
 
     History.findOneAndUpdate({ Date: vietnam.Date }, vietnam, {
       upsert: true,
       new: true,
       setDefaultsOnInsert: true,
     })
-      .then(() => console.log(successAlert('Saved vietnam history successfully!!!')))
-      .catch(() => console.log(errorWaring('Saved vietnam history fail!!!')))
+      .then(() => console.log(successAlert(`Saved vietnam history successfully at ${moment(new Date()).format('DD/MM/YYYY HH:MM:SS')}!!!`)))
+      .catch(() => console.log(errorWaring(`Saved vietnam history fail at ${moment(new Date()).format('DD/MM/YYYY HH:MM:SS')}!!!`)))
 
     Local_vn.findOneAndUpdate({ Date: local_vn.Date }, local_vn, {
       upsert: true,
       new: true,
       setDefaultsOnInsert: true,
     })
-      .then(() => console.log(successAlert('Saved vietnam local successfully!!!')))
-      .catch(() => console.log(errorWaring('Saved vietnam local fail!!!')))
-
+      .then(() => console.log(successAlert(`Saved vietnam local successfully at ${moment(new Date()).format('DD/MM/YYYY HH:MM:SS')}!!!`)))
+      .catch(() => console.log(errorWaring(`Saved vietnam local fail at ${moment(new Date()).format('DD/MM/YYYY HH:MM:SS')}!!!`)))
   });
 }

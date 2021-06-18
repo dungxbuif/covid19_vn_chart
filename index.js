@@ -1,6 +1,5 @@
-const schedule = require('node-schedule');
-const crawl = require('./crawl/moh');
 const updateData = require('./crawl/updateData');
+const schedule = require('node-schedule');
 const express = require('express');
 const route = require('./routes');
 const db = require('./config/db');

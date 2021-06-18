@@ -1,8 +1,12 @@
 const moment = require('../../client/node_modules/moment')
+const updateData = require('../../crawl/updateData');
 const Local_vn = require('../models/Local_vn');
 const History = require('../models/History');
+const chalk = require('chalk');
 const path = require('path');
 const fs = require('fs')
+
+const errorWaring = chalk.bold.red;
 
 module.exports = {
   history: (req, res, next) => {
@@ -56,7 +60,10 @@ module.exports = {
 
         res.send(data)
       })
-      .catch(err => {throw err}); 
+      .catch(err => {
+        updateData();
+        console.log(errorWaring(`Error": ${err.message}. Updated data please refresh page`))
+      }); 
     
   }
 }
