@@ -20,16 +20,16 @@ const initOptions = {
   },
   legend: {
     title: {
-        text: 'Số ca mắc ',
-        style: {
-            color: ( // theme
-                Highcharts.defaultOptions &&
-                Highcharts.defaultOptions.legend &&
-                Highcharts.defaultOptions.legend.title &&
-                Highcharts.defaultOptions.legend.title.style &&
-                Highcharts.defaultOptions.legend.title.style.color
-            ) || 'black'
-        }
+      text: 'Số ca mắc ',
+      style: {
+          color: ( // theme
+              Highcharts.defaultOptions &&
+              Highcharts.defaultOptions.legend &&
+              Highcharts.defaultOptions.legend.title &&
+              Highcharts.defaultOptions.legend.title.style &&
+              Highcharts.defaultOptions.legend.title.style.color
+          ) || 'black'
+      }
     },
     y: 100,
     x:10,

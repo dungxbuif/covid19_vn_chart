@@ -39,6 +39,10 @@
     "hc-key": "VN.BG",
     "alt-name": "Bac Giang"
   },
+  "vn-307": {
+    "hc-key": "VN.307",
+    "alt-name": "Bac Kạn"
+  },
   "25": {
     "hc-key": "VN.PT",
     "alt-name": "Phu Tho"
@@ -198,6 +202,10 @@
   "87": {
     "hc-key": "VN.DT",
     "alt-name": "Dong Thap"
+  },
+  "VN.331": {
+    "hc-key": "vn-331",
+    "alt-name": "Dong Nai"
   },
   "89": {
     "hc-key": "VN.AG",
