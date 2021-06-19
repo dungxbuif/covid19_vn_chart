@@ -4,7 +4,7 @@ import LineChart from './Charts/LineChart';
 import Grid from '@material-ui/core/Grid';
 import HighMaps from './Charts/HighMaps';
 
-export default function Summary({ selectedCountryId, report }) {
+export default function Summary({ selectedCountryId, history, perday }) {
   const [mapData, setMapData] = useState({});
 
   useEffect(() => {
@@ -21,11 +21,15 @@ export default function Summary({ selectedCountryId, report }) {
     <div style={{marginTop: 10}}>
       <Grid container spacing={3} >
         <Grid item sm={8} xs={12}>
-          <LineChart data={report} />
+          <LineChart data={history} kind={'history'} />
         </Grid>
 
         <Grid item sm={4} xs={12}>
           <HighMaps mapData={mapData} />
+        </Grid>
+
+        <Grid item sm={12} xs={12}>
+          <LineChart data={perday} kind={'perday'} />
         </Grid>
       </Grid>
     </div>

@@ -4,7 +4,8 @@ const Local_vn = require('../models/Local_vn');
 const History = require('../models/History');
 const chalk = require('chalk');
 const path = require('path');
-const fs = require('fs')
+const fs = require('fs');
+const { response } = require('express');
 
 const errorWaring = chalk.bold.red;
 
@@ -64,6 +65,32 @@ module.exports = {
         updateData();
         console.log(errorWaring(`Error": ${err.message}. Updated data please refresh page`))
       }); 
+  },
+  "history-per-day": (req, response, next)=>{
+    History.find({ISO2: "vn"}).then(res => {
+      let data = [{
+        Country: res[0].Country,
+        Slug: res[0].Slug,
+        ISO2: res[0].ISO2,
+        Confirmed: res[0].Confirmed,
+        Deaths: res[0].Deaths,
+        Recovered: res[0].Recovered,
+        Date: moment(res[0].Date, 'DD-MM-YYYY').format('DD/MM/YYYY'),
+      }];
     
+      for (let i = 1; i < res.length; i++) {
+        data.push({
+          Country: res[i].Country,
+          Slug: res[i].Slug,
+          ISO2: res[i].ISO2,
+          Confirmed: parseInt(res[i].Confirmed) - parseInt(res[i - 1].Confirmed),
+          Deaths: parseInt(res[i].Deaths) - parseInt(res[i - 1].Deaths),
+          Recovered: (parseInt(res[i].Recovered) -parseInt( res[i - 1].Recovered))>0?parseInt(res[i].Recovered) -parseInt( res[i - 1].Recovered):0,
+          Date: moment(res[i].Date, 'DD-MM-YYYY').format('DD/MM/YYYY'),
+        })
+      }
+      
+      response.json(data)
+    })
   }
 }

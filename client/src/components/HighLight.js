@@ -2,8 +2,8 @@ import HighLightCard from './HighLightCard';
 import { Grid } from '@material-ui/core';
 import React from 'react';
 
-export default function HighLight({ report }) {
-  const data = report && report.length ? report[report.length -1] : [];
+export default function HighLight({ history }) {
+  const data = history && history.length ? history[history.length -1] : [];
   const summary = [
     {
       title: 'Số ca nhiễm',

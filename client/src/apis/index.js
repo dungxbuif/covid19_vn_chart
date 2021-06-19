@@ -6,8 +6,11 @@ export const getCountries = () =>
 export const getDetailVnLocal = () => 
   axios.get('/api/detail-local-vn');
 
-export const getReportByCountry = (country) => 
+export const getReportByCountry = () => 
   axios.get('/api/history');
+
+export const getReportPerDay = () => 
+  axios.get('/api/history-per-day');
 
 export const getMapDataByCountryId = (countryId) =>
   import(

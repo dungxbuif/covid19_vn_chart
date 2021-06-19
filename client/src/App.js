@@ -1,5 +1,5 @@
 // import CountrySelector from "./components/CountrySelector";
-import { getReportByCountry } from "./apis";
+import { getReportByCountry, getReportPerDay } from "./apis";
 import Typography from '@material-ui/core/Typography';
 import HighLight from "./components/HighLight";
 import { Container } from "@material-ui/core";
@@ -15,7 +15,8 @@ moment.locale('vi');
 function App() {
   // const [countries, setCountries] = useState([]);
   const [selectedCountryID, setSelectedCountryID] = useState('vn');
-  const [report, setReport] = useState([]);
+  const [history, setHistory] = useState([]);
+  const [perday, setPerDay] = useState([]);
   const handleOnChange = (e) => {
     setSelectedCountryID(e.target.value);
   };
@@ -33,9 +34,14 @@ function App() {
       // const { Slug } = countries.find(
       //   country => country.ISO2.toLowerCase() === selectedCountryID
       // );
-      getReportByCountry('vietnam')
+      getReportByCountry()
         .then(res => {
-          setReport(res.data);
+          setHistory(res.data);
+        });
+
+      getReportPerDay()
+        .then(res => {
+          setPerDay(res.data);
         });
     // }
   }, [selectedCountryID]);
@@ -50,8 +56,8 @@ function App() {
         {moment().format('LLL')}
       </Typography>
       {/* <CountrySelector c`ountries={countries} handleOnChange={handleOnChange} value={selectedCountryID} /> */}
-      <HighLight report={report} />
-      <Summary report={report} selectedCountryId={selectedCountryID} />
+      <HighLight history={history} />
+      <Summary history={history}  perday={perday} selectedCountryId={selectedCountryID} />
     </Container>
   );
 
