@@ -75,7 +75,7 @@ const LineChart = ({ data, kind }) => {
         customData = data;
         break;
       case '2021':
-        customData = data.slice(data.findIndex(item => item.Date === '01/01/2021'));
+        customData = data.slice(data.findIndex(item => item.Date === ((kind === 'perday-death')?'14/05/2021':'01/01/2021')));
         break;
       case '30':
         customData = data.slice(data.length - 30);
