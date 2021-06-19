@@ -6,10 +6,15 @@ import HighCharts from 'highcharts';
 const generateOptions = (data, kind) => {
   const categories = data.map(item => item.Date);
   let text = 'Tổng ca nhiễm';
+  let series = 'Confirmed';
   switch (kind) {
-    case 'perday':
+    case 'perday-confirmed':
       text = 'Số ca nhiễm';
       break;
+    case 'perday-death':
+        text = 'Số ca tử vong';
+        series = 'Deaths';
+        break;
     default:
       break;
   }
@@ -52,8 +57,8 @@ const generateOptions = (data, kind) => {
     },
     series: [
       {
-        name: 'Tổng Ca nhiễm',
-        data: data.map(item => item.Confirmed),
+        name: 'Tổng số ca',
+        data: data.map(item => item[`${series}`]),
       },
     ],
   };

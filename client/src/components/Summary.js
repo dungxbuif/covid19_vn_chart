@@ -28,8 +28,12 @@ export default function Summary({ selectedCountryId, history, perday }) {
           <HighMaps mapData={mapData} />
         </Grid>
 
-        <Grid item sm={12} xs={12}>
-          <LineChart data={perday} kind={'perday'} />
+        <Grid item sm={6} xs={12}>
+          <LineChart data={perday} kind={'perday-confirmed'} />
+        </Grid>
+
+        <Grid item sm={6} xs={12}>
+          <LineChart data={perday} kind={'perday-death'} />
         </Grid>
       </Grid>
     </div>
