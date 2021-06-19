@@ -13,7 +13,7 @@ module.exports = {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
-      useFindAndModify: false,
+      useFindAndModify: true,
     });
     mongoose.connection.on('connected', () => {
       console.log(connected('Connect to MongoDB successfully !!!'));
