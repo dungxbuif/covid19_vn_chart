@@ -22,7 +22,7 @@ module.exports = {
   },
   "detail-local-vn": (req, res, next) => {
     const _localKey = JSON.parse(fs.readFileSync(path.join(__dirname, '../../config/local_key.json')));
-    Local_vn.find({ Date: moment(new Date()).format('DD-MM-YYYY')})
+    Local_vn.find({ Date: moment().format('DD-MM-YYYY')})
       .then(arr=>{
         let data = arr[0].data;
         let tmpArr =[]

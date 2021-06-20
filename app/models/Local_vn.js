@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const Local_vn = new Schema(
   {
-    Date: { type: String, default: moment(new Date()).format("DD-MM-YYYY") },
+    Date: { type: String, default: moment().format("DD-MM-YYYY") },
     data: {type: Array},
   }
 )

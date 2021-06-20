@@ -21,22 +21,30 @@ api.getMohAPI().then(res => {
   //   setDefaultsOnInsert: true,
   //   useFindAndModify: true,
   // })
-  //   .then(() => console.log(successAlert(`Saved world history successfully at ${moment(new Date()).format('DD/MM/YYYY HH:MM:SS')}!!!`)))
-  //   .catch(() => console.log(errorWaring(`Saved world history failat ${moment(new Date()).format('DD/MM/YYYY HH:MM:SS')}!!!`)))
+  //   .then(() => console.log(successAlert(`Saved world history successfully at ${moment().format('DD/MM/YYYY HH:mm:SS')}!!!`)))
+  //   .catch(() => console.log(errorWaring(`Saved world history failat ${moment().format('DD/MM/YYYY HH:mm:SS')}!!!`)))
 
   History.findOneAndUpdate({ Date: vietnam.Date, ISO2: "vn"  }, vietnam, {
     upsert: true,
     new: true,
     setDefaultsOnInsert: true,
   })
-    .then(() => console.log(successAlert(`Saved vietnam history successfully at ${moment(new Date()).format('DD/MM/YYYY HH:MM:SS')}!!!`)))
-    .catch((err) => console.log(errorWaring(`Saved vietnam history fail at ${moment(new Date()).format('DD/MM/YYYY HH:MM:SS')}!!!`)))
+    .then(() =>{
+      console.log(successAlert(`Saved vietnam history successfully at ${moment().format('DD/MM/YYYY HH:mm:SS')}!!!`))
+    })
+    .catch((err) => {
+      console.log(errorWaring(`Saved vietnam history fail at ${moment().format('DD/MM/YYYY HH:mm:SS')}!!!`))
+    })
 
   Local_vn.findOneAndUpdate({ Date: local_vn.Date}, local_vn, {
     upsert: true,
     new: true,
     setDefaultsOnInsert: true,
   })
-    .then(() => console.log(successAlert(`Saved vietnam local successfully at ${moment(new Date()).format('DD/MM/YYYY HH:MM:SS')}!!!`)))
-    .catch(() => console.log(errorWaring(`Saved vietnam local fail at ${moment(new Date()).format('DD/MM/YYYY HH:MM:SS')}!!!`)))
+    .then(() =>{
+      console.log(successAlert(`Saved vietnam local successfully at ${moment().format('DD/MM/YYYY HH:mm:SS')}!!!`))
+    })
+    .catch(() =>{
+      console.log(errorWaring(`Saved vietnam local fail at ${moment().format('DD/MM/YYYY HH:mm:SS')}!!!`))
+    })
 });

@@ -28,6 +28,7 @@ route(app);
 //Connect MongoDB 
 const URL = process.env.MONGODB_URL;
 db.connect(URL);
+updateData();
 
 //schedule run update
 const runUpdateData = schedule.scheduleJob({minute: 58}, time => {
@@ -37,3 +38,4 @@ const runUpdateData = schedule.scheduleJob({minute: 58}, time => {
 app.listen(port, () =>
     console.log(successAlert(`Server is running on http://dungxbuif-localhost:${port}`)),
 );
+

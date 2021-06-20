@@ -12,7 +12,7 @@ const History = new Schema(
     Deaths: { type: Number, default: 0},
     Recovered: { type: Number, default: 0},
     Active: { type: Number, default: 0},
-    Date: { type: String, default: moment(new Date()).format("DD-MM-YYYY") },
+    Date: { type: String, default: moment().format("DD-MM-YYYY") },
   }
 )
 
