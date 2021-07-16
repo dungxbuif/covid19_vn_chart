@@ -26,7 +26,7 @@ app.use(express.json());
 route(app);
 
 //Connect MongoDB 
-const URL = process.env.MONGODB_URL;
+const URL = process.env.MONGODB_URL_CLOUD;
 db.connect(URL);
 updateData();
 
