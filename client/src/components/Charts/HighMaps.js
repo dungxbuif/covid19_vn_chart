@@ -93,7 +93,6 @@ const initOptions = {
 };
 
 const HighMaps = ({ mapData }) => {
-  console.log(mapData)
   const [options, setOptions] = useState({});
   const [mapLoaded, setMapLoaded] = useState(false);
   const chartRef = useRef(null);
@@ -102,11 +101,6 @@ const HighMaps = ({ mapData }) => {
     if (mapData && Object.keys(mapData).length) {
       getDetailVnLocal().then(res=>{
         const detailData = res.data;
-        // mapData.features.map((feature, index) => ({
-        //   key: feature.properties['hc-key'],
-        //   value: index,
-        // }));
-        console.log(detailData)
         
         setOptions(() => ({
           ...initOptions,
