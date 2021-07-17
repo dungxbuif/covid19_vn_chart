@@ -1,11 +1,11 @@
 {
   "10": {
     "hc-key": "VN.LO",
-    "alt-name": "Lao Cai"
+    "alt-name": "Lào Cai"
   },
   "11": {
     "hc-key": "VN.DB",
-    "alt-name": "Dien Bien"
+    "alt-name": "Điện Biên"
   },
   "12": {
     "hc-key": "VN.LI",
@@ -13,55 +13,55 @@
   },
   "14": {
     "hc-key": "VN.311",
-    "alt-name": "Son La"
+    "alt-name": "Sơn La"
   },
   "15": {
     "hc-key": "VN.YB",
-    "alt-name": "Yen Bai"
+    "alt-name": "Yên Bái"
   },
   "17": {
     "hc-key": "VN.HO",
-    "alt-name": "Hoa Binh"
+    "alt-name": "Hòa BÌnh"
   },
   "19": {
     "hc-key": "VN.TY",
-    "alt-name": "Thai Nguyen"
+    "alt-name": "Thái Nguyên"
   },
   "20": {
     "hc-key": "VN.LS",
-    "alt-name": "Lang Son"
+    "alt-name": "Lạng Sơn"
   },
   "22": {
     "hc-key": "VN.QN",
-    "alt-name": "Quang Ninh"
+    "alt-name": "Quảng Ninh"
   },
   "24": {
     "hc-key": "VN.BG",
-    "alt-name": "Bac Giang"
+    "alt-name": "Bắc Giang"
   },
   "vn-307": {
     "hc-key": "VN.307",
-    "alt-name": "Bac Kạn"
+    "alt-name": "Bắc Kạn"
   },
   "25": {
     "hc-key": "VN.PT",
-    "alt-name": "Phu Tho"
+    "alt-name": "Phú Thọ"
   },
   "26": {
     "hc-key": "VN.VC",
-    "alt-name": "Vinh Phuc"
+    "alt-name": "Vĩnh Phúc"
   },
   "27": {
     "hc-key": "VN.BN",
-    "alt-name": "Bac Ninh"
+    "alt-name": "Bắc Ninh"
   },
   "30": {
     "hc-key": "VN.HD",
-    "alt-name": "Hai Duong"
+    "alt-name": "Hải Dương"
   },
   "31": {
     "hc-key": "VN.3623",
-    "alt-name": "Hai Phong"
+    "alt-name": "Hải Phòng"
   },
   "33": {
     "hc-key": "VN.317",
@@ -69,43 +69,43 @@
   },
   "34": {
     "hc-key": "VN.TB",
-    "alt-name": "Thai Binh"
+    "alt-name": "Thái Bình"
   },
   "35": {
     "hc-key": "VN.HM",
-    "alt-name": "Ha Nam"
+    "alt-name": "Hà Nam"
   },
   "36": {
     "hc-key": "VN.ND",
-    "alt-name": "Nam Dinh"
+    "alt-name": "Nam Định"
   },
   "37": {
     "hc-key": "VN.NB",
-    "alt-name": "Ninh Binh"
+    "alt-name": "Ninh Bình"
   },
   "38": {
     "hc-key": "VN.TH",
-    "alt-name": "Thanh Hoa"
+    "alt-name": "Thanh Hóa"
   },
   "40": {
     "hc-key": "VN.NA",
-    "alt-name": "Nghe An"
+    "alt-name": "Nghệ An"
   },
   "42": {
     "hc-key": "VN.328",
-    "alt-name": "Ha Tinh"
+    "alt-name": "Hà Tĩnh"
   },
   "44": {
     "hc-key": "VN.QB",
-    "alt-name": "Quang Binh"
+    "alt-name": "Quảng Binh"
   },
   "45": {
     "hc-key": "VN.QT",
-    "alt-name": "Quang Tri"
+    "alt-name": "Quảng Trị"
   },
   "46": {
     "hc-key": "VN.TT",
-    "alt-name": "Thua Thien - Hue"
+    "alt-name": "Thừa Thiên Huế"
   },
   "48": {
     "hc-key": "VN.DA",
@@ -117,27 +117,27 @@
   },
   "51": {
     "hc-key": "VN.QG",
-    "alt-name": "Quang Ngai"
+    "alt-name": "Quảng Ngãi"
   },
   "52": {
     "hc-key": "VN.BD",
-    "alt-name": "Binh Dinh"
+    "alt-name": "Bình Định"
   },
   "54": {
     "hc-key": "VN.PY",
-    "alt-name": "Phu Yen"
+    "alt-name": "Phú Yên"
   },
   "56": {
     "hc-key": "VN.KH",
-    "alt-name": "Khanh Hoa"
+    "alt-name": "Khánh Hòa"
   },
   "58": {
     "hc-key": "VN.NT",
-    "alt-name": "Ninh Thuan"
+    "alt-name": "Ninh Thuận"
   },
   "60": {
     "hc-key": "VN.BU",
-    "alt-name": "Binh Thuan"
+    "alt-name": "Bình Thuận"
   },
   "62": {
     "hc-key": "VN.299",
@@ -153,23 +153,23 @@
   },
   "67": {
     "hc-key": "VN.6365",
-    "alt-name": "Dak Nong"
+    "alt-name": "Đắk Nông"
   },
   "68": {
     "hc-key": "VN.LD",
-    "alt-name": "Lam Dong"
+    "alt-name": "Lâm Đồng"
   },
   "70": {
     "hc-key": "VN.BP",
-    "alt-name": "Binh Phuoc"
+    "alt-name": "Bình Phước"
   },
   "72": {
     "hc-key": "VN.TN",
-    "alt-name": "Tay Ninh"
+    "alt-name": "Tây Ninh"
   },
   "74": {
     "hc-key": "VN.BI",
-    "alt-name": "Binh Duong"
+    "alt-name": "Bình Dương"
   },
   "77": {
     "hc-key": "VN.BV",
@@ -185,27 +185,27 @@
   },
   "82": {
     "hc-key": "VN.TG",
-    "alt-name": "Tien Giang"
+    "alt-name": "Tiền Giang"
   },
   "83": {
     "hc-key": "VN.BR",
-    "alt-name": "Ben Tre"
+    "alt-name": "Bến Tre"
   },
   "84": {
     "hc-key": "VN.TV",
-    "alt-name": "Tra Vinh"
+    "alt-name": "trà Vinh"
   },
   "86": {
     "hc-key": "VN.VL",
-    "alt-name": "Vinh Long"
+    "alt-name": "Vĩnh Long"
   },
   "87": {
     "hc-key": "VN.DT",
-    "alt-name": "Dong Thap"
+    "alt-name": "Đồng Tháp"
   },
   "VN.331": {
     "hc-key": "vn-331",
-    "alt-name": "Dong Nai"
+    "alt-name": "Đồng Nai"
   },
   "89": {
     "hc-key": "VN.AG",
@@ -213,7 +213,7 @@
   },
   "91": {
     "hc-key": "VN.KG",
-    "alt-name": "Kien Giang"
+    "alt-name": "Kiên Giang"
   },
   "92": {
     "hc-key": "VN.333",
@@ -225,15 +225,15 @@
   },
   "94": {
     "hc-key": "VN.ST",
-    "alt-name": "Soc Trang"
+    "alt-name": "Sóc Trăng"
   },
   "95": {
     "hc-key": "VN.BL",
-    "alt-name": "Bac Lieu"
+    "alt-name": "Bạc Liêu"
   },
   "96": {
     "hc-key": "VN.CM",
-    "alt-name": "Ca Mau"
+    "alt-name": "Cà Mau"
   },
   "01": {
     "hc-key": "VN.318",
@@ -241,7 +241,7 @@
   },
   "02": {
     "hc-key": "VN.HG",
-    "alt-name": "Ha Giang"
+    "alt-name": "Hà Giang"
   },
   "04": {
     "hc-key": "VN.CB",
