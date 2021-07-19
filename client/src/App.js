@@ -14,26 +14,20 @@ moment.locale("vi");
 
 function App() {
     // const [countries, setCountries] = useState([]);
-    const [selectedCountryID, setSelectedCountryID] = useState("vn");
+    // const [selectedCountryID, setSelectedCountryID] = useState("vn");
     const [history, setHistory] = useState([]);
     const [perday, setPerDay] = useState([]);
-    const handleOnChange = (e) => {
-        setSelectedCountryID(e.target.value);
-    };
 
-    // useEffect(() => {
-    //   getCountries().then(res => {
-    //     const countries = sortBy(res.data, 'Country');
-    //     setCountries(countries);
-    //     setSelectedCountryID('vn');
-    //   })
-    // }, []);
+    // const handleOnChange = (e) => {
+    //     setSelectedCountryID(e.target.value);
+    // };
 
     useEffect(() => {
-        // if (selectedCountryID) {
-        // const { Slug } = countries.find(
-        //   country => country.ISO2.toLowerCase() === selectedCountryID
-        // );
+        //   getCountries().then(res => {
+        //     const countries = sortBy(res.data, 'Country');
+        //     setCountries(countries);
+        //     setSelectedCountryID('vn');
+        //   })
         getReportByCountry().then((res) => {
             setHistory(res.data);
         });
@@ -41,8 +35,22 @@ function App() {
         getReportPerDay().then((res) => {
             setPerDay(res.data);
         });
-        // }
-    }, [selectedCountryID]);
+    }, []);
+
+    // useEffect(() => {
+    // if (selectedCountryID) {
+    // const { Slug } = countries.find(
+    //   country => country.ISO2.toLowerCase() === selectedCountryID
+    // );
+    // getReportByCountry().then((res) => {
+    //     setHistory(res.data);
+    // });
+
+    // getReportPerDay().then((res) => {
+    //     setPerDay(res.data);
+    // });
+    // }
+    // }, [selectedCountryID]);
 
     return (
         <Container style={{ marginTop: 20 }}>
@@ -55,7 +63,8 @@ function App() {
             <Summary
                 history={history}
                 perday={perday}
-                selectedCountryId={selectedCountryID}
+                // selectedCountryId={selectedCountryID}
+                selectedCountryId={"vn"}
             />
         </Container>
     );

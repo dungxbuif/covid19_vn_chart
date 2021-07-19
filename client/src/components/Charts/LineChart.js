@@ -98,7 +98,7 @@ const LineChart = ({ data, kind }) => {
         }
 
         setOptions(generateOptions(customData, kind));
-    }, [data, reportType]);
+    }, [data, reportType,kind]);
 
     return (
         <div>

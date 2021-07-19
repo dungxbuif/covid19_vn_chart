@@ -4,8 +4,8 @@ const Local_vn = require("../models/Local_vn");
 const History = require("../models/History");
 const chalk = require("chalk");
 const path = require("path");
+const getLocalValue = require("../../services/getLocalAPI");
 const fs = require("fs");
-const { response } = require("express");
 
 const errorWaring = chalk.bold.red;
 
@@ -25,12 +25,12 @@ module.exports = {
                 throw err;
             });
     },
-    "detail-local-vn": (req, res, next) => {
+    detail_local_vn: (req, res, next) => {
         const _localKey = JSON.parse(
             fs.readFileSync(path.join(__dirname, "../../config/local_key.json"))
         );
         Local_vn.find({ Date: moment().format("DD-MM-YYYY") })
-            .then((arr) => {
+            .then(async (arr) => {
                 let data = arr[0].data;
                 let tmpArr = [];
 
@@ -47,6 +47,13 @@ module.exports = {
                     item["hc-key"] = newHcKey.replace(".", "-").toLowerCase();
                     item["localname"] = newAltName;
                     return item;
+                });
+
+                let provineVal = await getLocalValue();
+                data.forEach((ele) => {
+                    if (provineVal[ele.localname]) {
+                        ele.value = parseInt(provineVal[ele.localname]);
+                    }
                 });
 
                 Object.entries(_localKey).forEach((entry) => {
@@ -76,7 +83,7 @@ module.exports = {
                 );
             });
     },
-    "history-per-day": (req, response, next) => {
+    history_per_day: (req, response, next) => {
         History.find({ ISO2: "vn" }).then((res) => {
             let data = [
                 {
