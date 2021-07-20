@@ -18,9 +18,9 @@
   },
   "scripts": {
     "start": "nodemon dev_test.js",
-    "server": "nodemon index.js",
-    "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "s": "nodemon index.js",
+    "c": "npm run start --prefix client",
+    "dev": "concurrently \"npm run s\" \"npm run c\""
   },
   "repository": {
     "type": "git",
