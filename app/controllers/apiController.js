@@ -1,4 +1,4 @@
-const moment = require('../../client/node_modules/moment');
+const moment = require('moment');
 const updateData = require('../../crawl/updateData');
 const Local_vn = require('../models/Local_vn');
 const History = require('../models/History');

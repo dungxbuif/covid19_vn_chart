@@ -1,18 +1,12 @@
-import axios from "axios";
+import axios from 'axios';
 
-export const getCountries = () => 
-  axios.get('https://api.covid19api.com/countries');
+export const getDetailVnLocal = () => axios.get('/api/detail-local-vn');
 
-export const getDetailVnLocal = () => 
-  axios.get('/api/detail-local-vn');
+export const getReportByCountry = () => axios.get('/api/history');
 
-export const getReportByCountry = () => 
-  axios.get('/api/history');
-
-export const getReportPerDay = () => 
-  axios.get('/api/history-per-day');
+export const getReportPerDay = () => axios.get('/api/history-per-day');
 
 export const getMapDataByCountryId = (countryId) =>
-  import(
-    `@highcharts/map-collection/countries/${countryId}/${countryId}-all.geo.json`
-  );
+   import(
+      `@highcharts/map-collection/countries/${countryId}/${countryId}-all.geo.json`
+   );

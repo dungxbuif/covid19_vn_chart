@@ -1,5 +1,5 @@
-const moment = require('../client/node_modules/moment');
-const axios = require('../client/node_modules/axios');
+const moment = require('moment');
+const axios = require('axios');
 const cheerio = require('cheerio');
 const chalk = require('chalk');
 const path = require('path');
@@ -59,13 +59,13 @@ const getLocalVN = async () => {
          return item;
       });
 
-      // let provineVal = await getLocalValue();
+      let provineVal = await getLocalValue();
 
-      // detail_vn.forEach((ele) => {
-      //    if (provineVal[ele.localname]) {
-      //       ele.value = parseInt(provineVal[ele.localname]);
-      //    }
-      // });
+      detail_vn.forEach((ele) => {
+         if (provineVal[ele.localname]) {
+            ele.value = parseInt(provineVal[ele.localname]);
+         }
+      });
 
       Object.entries(_localKey).forEach((entry) => {
          let [key, value] = entry;

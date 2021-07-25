@@ -4,11 +4,13 @@
   "description": "https://www.youtube.com/watch?v=EyV9fqoWhzc&t=129s",
   "main": "index.js",
   "dependencies": {
+    "axios": "^0.21.1",
     "chalk": "^4.1.1",
     "cheerio": "^1.0.0-rc.10",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "moment": "^2.29.1",
     "mongoose": "^5.12.13",
     "node-schedule": "^2.0.0"
   },
@@ -17,7 +19,7 @@
     "nodemon": "^2.0.7"
   },
   "scripts": {
-    "start": "nodemon dev_test.js",
+    "start": "nodemon index",
     "s": "nodemon index.js",
     "c": "npm run start --prefix client",
     "dev": "concurrently \"npm run s\" \"npm run c\""
