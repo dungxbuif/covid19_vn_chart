@@ -15,6 +15,7 @@ import Paper from '@material-ui/core/Paper';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import './TableVaccine.scss';
+import CountUp from 'react-countup';
 
 const useRowStyles = makeStyles({
    root: {
@@ -36,25 +37,33 @@ function Row(props) {
                {row.tinh}
             </TableCell>
             <TableCell className="py-2" align="center">
-               {row.danso}
+               <CountUp end={row.danso || 0} duration={3} separator="." />
             </TableCell>
             <TableCell className="py-2" align="center">
-               {row.tiemmui1}
+               <CountUp end={row.tiemmui1 || 0} duration={3} separator="." />
             </TableCell>
             <TableCell className="py-2" align="center">
-               {row.tiemmui2}
+               <CountUp end={row.tiemmui2 || 0} duration={3} separator="." />
             </TableCell>
             <TableCell className="py-2" align="center">
-               {row.tongmuidatiem}
+               <CountUp end={row.tiemmui2 || 0} duration={3} separator="." />
             </TableCell>
             <TableCell className="py-2" align="center">
-               {row.tongsovaccineduocphan}
+               <CountUp
+                  end={row.tongsovaccineduocphan || 0}
+                  duration={3}
+                  separator="."
+               />
             </TableCell>
             <TableCell className="py-2" align="center">
-               {row.sodiemtiem}
+               <CountUp end={row.sodiemtiem || 0} duration={3} separator="." />
             </TableCell>
             <TableCell className="py-2" align="center">
-               {row.soloaivaccinephanphoi}
+               <CountUp
+                  end={row.soloaivaccinephanphoi || 0}
+                  duration={3}
+                  separator="."
+               />
             </TableCell>
             <TableCell className="py-2" align="right">
                {open ? 'Thu gọn ' : 'Chi tiết '}
@@ -98,7 +107,11 @@ function Row(props) {
                                     component="th"
                                     scope="row"
                                  >
-                                    {ele.totalAllocated}
+                                    <CountUp
+                                       end={ele.totalAllocated || 0}
+                                       duration={3}
+                                       separator="."
+                                    />
                                  </TableCell>
                               ))}
                            </TableRow>

@@ -36,7 +36,7 @@ function App() {
          </Typography>
          <Typography>{moment().format('LLL')}</Typography>
          <HighLight history={history} />
-         <Summary history={history} perday={perday} ryId={'vn'} />
+         <Summary history={history} perday={perday} />
          <Typography variant="h3" components="h3">
             Số liệu tiêm chủng vaccines ngừa COVID-19
          </Typography>
