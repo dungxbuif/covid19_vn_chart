@@ -5,3 +5,21 @@ $fa-font-path: '~@fortawesome/fontawesome-free-webfonts/webfonts';
 @import '~@fortawesome/fontawesome-free-webfonts/scss/fa-solid.scss';
 @import '~@fortawesome/fontawesome-free-webfonts/scss/fa-regular.scss';
 @import '~@fortawesome/fontawesome-free-webfonts/scss/fa-brands.scss';
+
+::-webkit-scrollbar-track {
+   background: #f1f1f1;
+   max-height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+   background: #888;
+}
+
+::-webkit-scrollbar {
+   width: 10px;
+   max-height: -webkit-fill-available;
+}
+
+html {
+   scroll-behavior: smooth;
+}

@@ -1,0 +1,14 @@
+.wrap {
+   tbody {
+      display: block;
+      overflow-y: auto;
+      overflow-x: hidden;
+      max-height: 644px;
+   }
+   tr {
+      width: 100%;
+      display: table;
+      table-layout: fixed;
+      background-color: white;
+   }
+}

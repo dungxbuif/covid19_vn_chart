@@ -1,15 +1,11 @@
 // import CountrySelector from "./components/CountrySelector";
-import {
-   getReportByCountry,
-   getReportPerDay,
-   getProvineVaccineAllocate,
-   getProvineVaccineDetail,
-} from './apis';
+import { getReportByCountry, getReportPerDay, getVaccines } from './apis';
 import Typography from '@material-ui/core/Typography';
 import HighLight from './components/HighLight';
 import { Container } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 import Summary from './components/Summary';
+import TableVaccine from './components/TableVaccine';
 // import { sortBy } from "lodash";
 import moment from 'moment';
 import '@fontsource/roboto';
@@ -24,13 +20,8 @@ function App() {
    const [perday, setPerDay] = useState([]);
    const [vaccine, setVaccine] = useState([]);
 
-   // const getVaccines = async () => {
-   //    let allo = await getProvineVaccineAllocate();
-   //    let detail = await getProvineVaccineDetail();
-   //    console.log(allo, detail);
-   // };
    // const handleOnChange = (e) => {
-   //     setSelectedCountryID(e.target.value);
+   //    setSelectedCountryID(e.target.value);
    // };
 
    useEffect(() => {
@@ -46,7 +37,9 @@ function App() {
       getReportPerDay().then((res) => {
          setPerDay(res.data);
       });
-      // getVaccines();
+      getVaccines().then((res) => {
+         setVaccine(res.data);
+      });
    }, []);
 
    // useEffect(() => {
@@ -76,8 +69,12 @@ function App() {
             history={history}
             perday={perday}
             // selectedCountryId={selectedCountryID}
-            selectedCountryId={'vn'}
+            // selectedCountryId={'vn'}
          />
+         <Typography variant="h3" components="h3">
+            Số liệu tiêm chủng vaccines ngừa COVID-19
+         </Typography>
+         <TableVaccine vaccine={vaccine} />
       </Container>
    );
 }
