@@ -4,12 +4,14 @@ const path = require('path');
 
 module.exports = (app) => {
    app.use('/api', (req, res, next) => {
-      console.log(req.headers);
       if (
          req.headers.api_key !== 'MY_TRACKING_COVID' ||
-         req.headers.host !== 'dungxbuif-covid-tracking.herokuapp.com'
+         req.headers.host !== 'dungxbuif-covid-tracking.herokuapp.com' ||
+         req.headers.referer !==
+            'https://dungxbuif-covid-tracking.herokuapp.com/' ||
+         req.headers['sec-fetch-site'] !== 'same-origin'
       ) {
-         res.json({ errStatus: 'You can not acccess this URL' });
+         res.status(500).json({ errMessage: 'You can not acccess this URL' });
       }
 
       next();
