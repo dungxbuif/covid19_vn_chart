@@ -156,9 +156,7 @@ const getData = async () => {
    });
 };
 
-module.exports = {
-   getData: getData(),
-};
+module.exports = getData;
 
 // const selectorVN =
 //     "#portlet_corona_trangchu_top_CoronaTrangchuTopPortlet_INSTANCE_RrVAbIFIPL7v > div > div.portlet-content-container > div > section.container > div.row.d-none.d-block.d-lg-none > div > div.form-row";

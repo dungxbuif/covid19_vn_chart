@@ -1,11 +1,8 @@
 const moment = require('moment');
-const updateData = require('../../crawl/updateData');
 const Local_vn = require('../models/Local_vn');
 const History = require('../models/History');
+const VaccineDetail = require('../models/VaccineDetail');
 const chalk = require('chalk');
-const path = require('path');
-const getLocalValue = require('../../crawl/getLocalAPI');
-const fs = require('fs');
 
 const errorWaring = chalk.bold.red;
 
@@ -58,5 +55,14 @@ module.exports = {
          }
          response.json(data);
       });
+   },
+   vaccine_details: (req, res, next) => {
+      VaccineDetail.find()
+         .then((data) => {
+            res.json(data);
+         })
+         .catch((err) => {
+            throw err;
+         });
    },
 };
