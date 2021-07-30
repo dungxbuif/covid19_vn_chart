@@ -10,13 +10,13 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Typography from '@material-ui/core/Typography';
+// import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+// import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+// import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import './TableVaccine.scss';
 import CountUp from 'react-countup';
-
+import _ from 'lodash';
 const useRowStyles = makeStyles({
    root: {
       '& > *': {
@@ -27,7 +27,7 @@ const useRowStyles = makeStyles({
 
 function Row(props) {
    const { row } = props;
-   const [open, setOpen] = React.useState(false);
+   // const [open, setOpen] = React.useState(false);
    const classes = useRowStyles();
 
    return (
@@ -46,7 +46,11 @@ function Row(props) {
                <CountUp end={row.tiemmui2 || 0} duration={3} separator="." />
             </TableCell>
             <TableCell className="py-2" align="center">
-               <CountUp end={row.tiemmui2 || 0} duration={3} separator="." />
+               <CountUp
+                  end={row.tongmuidatiem || 0}
+                  duration={3}
+                  separator="."
+               />
             </TableCell>
             <TableCell className="py-2" align="center">
                <CountUp
@@ -65,7 +69,7 @@ function Row(props) {
                   separator="."
                />
             </TableCell>
-            <TableCell className="py-2" align="right">
+            {/* <TableCell className="py-2" align="right">
                {open ? 'Thu gọn ' : 'Chi tiết '}
                <IconButton
                   aria-label="expand row"
@@ -74,9 +78,9 @@ function Row(props) {
                >
                   {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
                </IconButton>
-            </TableCell>
+            </TableCell> */}
          </TableRow>
-         <TableRow>
+         {/* <TableRow>
             <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
                <Collapse in={open} timeout="auto" unmountOnExit>
                   <Box
@@ -120,13 +124,14 @@ function Row(props) {
                   </Box>
                </Collapse>
             </TableCell>
-         </TableRow>
+         </TableRow> */}
       </>
    );
 }
 
 export default function TableVaccine({ vaccine }) {
-   const data = [...vaccine];
+   const tmpDdata = [...vaccine];
+   const data = _.orderBy(tmpDdata, 'danso', 'desc');
    return (
       <TableContainer component={Paper} className="my-5 wrap">
          <Table aria-label="collapsible table">
@@ -154,9 +159,9 @@ export default function TableVaccine({ vaccine }) {
                      Số điểm tiêm
                   </TableCell>
                   <TableCell className="text-white bg-dark py-3" align="center">
-                     Loại phân phối
+                     Dự kiến phân phối
                   </TableCell>
-                  <TableCell className="text-white bg-dark py-3" />
+                  {/* <TableCell className="text-white bg-dark py-3" /> */}
                </TableRow>
             </TableHead>
             <TableBody>

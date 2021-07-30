@@ -11,6 +11,9 @@ module.exports = {
       History.find()
          .then((data) => {
             let tmpArr = [...data];
+            tmpArr.sort((a, b) =>
+               moment(a.Date, 'DD-MM-YYYY').diff(moment(b.Date, 'DD-MM-YYYY'))
+            );
             tmpArr.forEach((item) => {
                item.Date = moment(item.Date, 'DD-MM-YYYY').format('DD/MM/YYYY');
             });
@@ -53,7 +56,11 @@ module.exports = {
                Date: moment(res[i].Date, 'DD-MM-YYYY').format('DD/MM/YYYY'),
             });
          }
-         response.json(data);
+         tmpArr = [...data];
+         tmpArr.sort((a, b) =>
+            moment(a.Date, 'DD/MM/YYYY').diff(moment(b.Date, 'DD/MM/YYYY'))
+         );
+         response.json(tmpArr);
       });
    },
    vaccine_details: (req, res, next) => {
